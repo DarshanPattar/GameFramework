@@ -8,6 +8,7 @@
 
 #include "Macros.h"
 #include "Graphics.h"
+#include "Game.h"
 
 int main(void)
 {
@@ -16,7 +17,7 @@ int main(void)
     if (!glfwInit())
         return -1;
 
-    window = glfwCreateWindow(900, 900, "Game", NULL, NULL);
+    window = glfwCreateWindow(SCREENWIDTH, SCREENHEIGHT, "Game", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -30,33 +31,35 @@ int main(void)
     }
 
     std::cout << glGetString(GL_VERSION) << std::endl;
-
-
-    Graphics gfx;
-    
-
-    while (!glfwWindowShouldClose(window))
     {
 
-        glClear(GL_COLOR_BUFFER_BIT);
+        Graphics gfx;
+        Game game;
+
+        double currentTime = glfwGetTime();
+        double lastFrame = currentTime;
+        double deltaTime;
+
+        game.Start();
+        while (!glfwWindowShouldClose(window))
+        {
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            currentTime = glfwGetTime();
+            deltaTime = currentTime - lastFrame;
+
+            game.Update(deltaTime);
+            game.Draw();
 
 
+            lastFrame = currentTime;
 
-
-        Color c(100, 250, 100);
-
-        gfx.PutPixel(100, 100, c);
-
-
-
-
-        glfwSwapBuffers(window);
-
-        glfwPollEvents();
+            glfwSwapBuffers(window);
+            glfwPollEvents();
+        }
     }
 
-
-        glfwTerminate();
+    glfwTerminate();
     
     return 0;
 }
