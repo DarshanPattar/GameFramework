@@ -1,5 +1,7 @@
 #pragma once
 #include "Graphics.h"
+#include "Board.h"
+#include <random>
 
 class Game {
 private:
@@ -10,4 +12,7 @@ public:
 	void Start();
 	void Update(double dt);
 	void Draw();
+
+	Board board;
+
 };

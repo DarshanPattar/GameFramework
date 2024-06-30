@@ -13,7 +13,7 @@ public:
 
 class Color {
 public:
-
+	Color() {}
 	Color(int r, int g, int b);
 	~Color();
 

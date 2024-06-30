@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include <iostream>
 // runs when game object is created
 Game::Game()
 {
@@ -16,11 +16,12 @@ void Game::Start()
 // update to update and modify the member variables
 void Game::Update(double dt)
 {
-	
+	//std::cout << dt <<" ";
 }
 
 //Function to render the frame
 void Game::Draw()
 {
-	gfx.DrawRect((int)x, (int)y, 200, 200, false, Color(255, 255, 255));
+	gfx.DrawRect((int)x-1, (int)y-1, 800+1, 800+1, false, Color(255, 255, 255));
+
 }
