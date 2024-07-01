@@ -16,6 +16,7 @@ void Snake::MoveBy(Location deltaLoc)
 void Snake::Grow()
 {
 	if (nSegments < nSegmentsMax) {
+		segments[nSegments].InitBody();
 		nSegments++;
 	}
 }
@@ -34,12 +35,12 @@ Snake::Segment::Segment()
 void Snake::Segment::InitHead(Location loc_in)
 {
 	loc = loc_in;
-	c = Color(255, 255, 255);
+	c = Color(255, 255, 0);
 }
 
 void Snake::Segment::InitBody()
 {
-	c = Color(255, 255, 255);
+	c = Color(150, 255, 0);
 }
 
 void Snake::Segment::MoveBy(Location deltaLoc)

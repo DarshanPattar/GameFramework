@@ -40,13 +40,16 @@ int main(void)
         double lastFrame = currentTime;
         double deltaTime;
 
-        game.Start();
+       
+
+        game.Start(window);
         while (!glfwWindowShouldClose(window))
         {
             glClear(GL_COLOR_BUFFER_BIT);
 
             currentTime = glfwGetTime();
             deltaTime = currentTime - lastFrame;
+
 
             game.Update(deltaTime);
             game.Draw();

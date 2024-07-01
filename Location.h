@@ -12,6 +12,9 @@ public:
 		x += loc.x;
 		y += loc.y;
 	}
+	bool operator==(Location l1) {
+		return (l1.x == x && l1.y == y);
+	}
 public:
 	int x;
 	int y;
