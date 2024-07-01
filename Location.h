@@ -12,7 +12,7 @@ public:
 		x += loc.x;
 		y += loc.y;
 	}
-	bool operator==(Location l1) {
+	bool operator==(const Location& l1) const {
 		return (l1.x == x && l1.y == y);
 	}
 public:

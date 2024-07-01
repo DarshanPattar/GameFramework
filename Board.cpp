@@ -15,3 +15,8 @@ void Board::DrawCell(Location loc, Color c)
 
 	gfx.DrawRect(boardLocOffset.x + (loc.x * dimention), boardLocOffset.y + (loc.y * dimention), dimention, dimention, true, c);
 }
+
+bool Board::IsInBoard(const Location loc) const
+{
+	return (loc.x >= 0 && loc.x < width) && (loc.y >= 0 && loc.y < height);
+}

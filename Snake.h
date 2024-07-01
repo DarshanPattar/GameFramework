@@ -12,6 +12,7 @@ private:
 		void MoveBy(Location deltaLoc);
 		void Follow(Segment next);
 		void Draw(Board board);
+		const Location& GetLocation() const;
 	private:
 		Location loc;
 		Color c;
@@ -19,6 +20,8 @@ private:
 public:
 	Snake(const Location loc);
 	void MoveBy(Location deltaLoc);
+	Location GetNextHeadLocation(const Location deltaLoc) const;
+	bool IsSegmentInTile(const Location& target) const;
 	void Grow();
 	void Draw();
 private:

@@ -17,6 +17,7 @@ public:
 	Location getGridLocation() const{
 		return boardLocOffset;
 	}
+	bool IsInBoard(const Location loc) const;
 private:
 	Location boardLocOffset = Location(100, 100);
 	static constexpr int dimention = 20;
