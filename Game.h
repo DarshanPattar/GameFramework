@@ -3,6 +3,13 @@
 #include "Board.h"
 #include "Snake.h"
 #include "Food.h"
+#include <random>
+
+
+enum GameState {
+	TITLE, GAME, GAMEOVER
+};
+
 
 class Game {
 private:
@@ -14,10 +21,15 @@ public:
 	void Update(double dt);
 	void Draw();
 
-	Snake snake = Snake(Location(15, 15));
+	void Reset();
+
+	
 	Board board;
 	GLFWwindow* window;
+
 	Location deltaLoc = Location(1, 0);
+	const Location startLoc = Location(15, 15);
+	Snake snake = Snake(startLoc);
 
 	int snakeSpeed = 5;
 	float accurateSnakeSpeed = 0;
@@ -27,12 +39,16 @@ public:
 	Location LEFT = Location(-1, 0);
 	Location RIGHT = Location(1, 0);
 
-	bool GameOver = false;
-	bool CanChangeDirection = true;
+	bool gameOver = false;
+	bool canChangeDirection = true;
 
 	int NetPoints = 0;
 
 	Food food;
 	int nFoodGoal = 0;
 	const int boostPointMark = 5;
+
+	std::mt19937 rng;
+
+	GameState gameState = TITLE;
 };
