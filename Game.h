@@ -3,6 +3,7 @@
 #include "Board.h"
 #include "Snake.h"
 #include "Food.h"
+#include "Surface.h"
 #include <random>
 
 
@@ -51,4 +52,7 @@ public:
 	std::mt19937 rng;
 
 	GameState gameState = TITLE;
+
+	Surface titleScreen = Surface("TitleScreen.bmp");
+	Surface gameOverScreen = Surface("GameOverScreen.bmp");
 };

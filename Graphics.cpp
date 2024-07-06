@@ -92,6 +92,17 @@ void Graphics::DrawLine(int x1, int y1, int x2, int y2, Color c)
 	}
 }
 
+void Graphics::DrawSprite(int x, int y, const Surface& surface)
+{
+	const int width = surface.GetWidth();
+	const int height = surface.GetHeight();
+	for (int sy = 0; sy < height; sy++) {
+		for (int sx = 0; sx < width; sx++) {
+			PutPixel(x + sx, y + sy, surface.GetPixel(sx, sy));
+		}
+	}
+}
+
 // maps [0, length] coordinates to [-1, 1]
 // like if (0, 0) coordinate is basically (-1, -1) on screen
 Coordinate Graphics::ObjToScreen(int x, int y)
@@ -104,14 +115,3 @@ Coordinate Graphics::ObjToScreen(int x, int y)
 	return point;
 }
 
-//Constructor that takes 8 bit color value and stores normalized values [0, 1]
-Color::Color(int ir, int ig, int ib)
-{
-	r = (GLfloat)ir / 255;
-	g = (GLfloat)ig / 255;
-	b = (GLfloat)ib / 255;
-}
-
-Color::~Color()
-{
-}

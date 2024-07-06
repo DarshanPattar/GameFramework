@@ -30,6 +30,7 @@ void Game::Update(double dt)
 	switch (gameState)
 	{
 	case TITLE:
+		//Press enter to start playing the game.
 		if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ENTER))
 		{
 			gameState = GAME;
@@ -69,7 +70,6 @@ void Game::Update(double dt)
 						NetPoints += food.points;
 						nFoodGoal += 1;
 						snake.Grow();
-						std::cout << NetPoints << " ";
 					}
 
 					snake.MoveBy(deltaLoc);
@@ -118,7 +118,9 @@ void Game::Draw()
 	{
 	case TITLE:
 		//Title Screen
-		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 1, 800 + 1, true, Color(0, 0, 200));
+		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 2, 800 + 2, false, Color(0, 0, 200));
+		//board.drawTitle(board);
+		gfx.DrawSprite(100, 100, titleScreen);
 		break;
 	case GAME:
 		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 1, 800 + 1, false, Color(255, 255, 255));
@@ -127,7 +129,9 @@ void Game::Draw()
 		break;
 	case GAMEOVER:
 		//Game Over Screen
-		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 1, 800 + 1, true, Color(255, 0, 0));
+		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 2, 800 + 2, true, Color(255, 0, 0));
+		gfx.DrawSprite(100, 100, gameOverScreen);
+		std::cout << NetPoints << " ";
 		break;
 	default:
 		break;
