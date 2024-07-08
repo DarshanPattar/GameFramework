@@ -131,7 +131,6 @@ void Game::Draw()
 		//Game Over Screen
 		gfx.DrawRect((int)x - 1, (int)y - 1, 800 + 2, 800 + 2, true, Color(255, 0, 0));
 		gfx.DrawSprite(100, 100, gameOverScreen);
-		std::cout << NetPoints << " ";
 		break;
 	default:
 		break;
